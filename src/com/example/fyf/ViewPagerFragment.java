@@ -91,7 +91,50 @@ public class ViewPagerFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment3, container, false);
 //		mViewPager = (ViewPager)rootView.findViewWithTag(R.tag.viewPager1Tag);
 //		generateData();
-		mPagerAdapter = new FYFPagerAdapter();
+//		mPagerAdapter = new FYFPagerAdapter();
+		mPagerAdapter = new PagerAdapter() {
+			ArrayList<View> mInnerImageArrayList = new ArrayList<View>();
+			
+			{
+				ImageView image1 = new ImageView(getActivity().getApplicationContext());
+				image1.setImageResource(R.drawable.abc_ic_voice_search);
+				ImageView image2 = new ImageView(getActivity().getApplicationContext());
+				image2.setImageResource(R.drawable.abc_ic_cab_done_holo_dark);
+				ImageView image3= new ImageView(getActivity().getApplicationContext());
+				image3.setImageResource(R.drawable.bender03pb);
+				mInnerImageArrayList.add(image1);
+				mInnerImageArrayList.add(image2);
+				mInnerImageArrayList.add(image3);
+			}
+			
+			@Override
+			public boolean isViewFromObject(View arg0, Object arg1) {
+				// TODO Auto-generated method stub
+				return arg0 == arg1;
+			}
+			
+			@Override
+			public int getCount() {
+				// TODO Auto-generated method stub
+				return mInnerImageArrayList.size();
+			}
+			
+			@Override
+			public Object instantiateItem(ViewGroup container, int position) {
+				Log.e("TEST", "Anonymous instantiateItem() " + position);
+				if (position >= 0 && position < mInnerImageArrayList.size()) {
+		        		container.addView(mInnerImageArrayList.get(position));
+		        		return mInnerImageArrayList.get(position);
+		        } else {
+		           return null;	
+		        }
+		    }
+			
+			@Override
+	        public void destroyItem(ViewGroup container, int position, Object obj) {
+	            container.removeView(mInnerImageArrayList.get(position));
+	        }
+		};
 		mViewPager = (ViewPager)rootView.findViewById(R.id.viewPager1);
 		mViewPager.setAdapter(mPagerAdapter);
 		mViewPager.setCurrentItem(0);

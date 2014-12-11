@@ -30,6 +30,7 @@ public class FYFMainActivity extends Activity {
 	long firstTime;
 	private boolean firstLaunch = true;
 	private static final String PREFIX = "http://";
+//	private Context mConext = getApplicationContext();
 	
 	ArrayList<View> mImageArrayList = new ArrayList<View>();
 	
@@ -87,7 +88,8 @@ public class FYFMainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.e("TEST", "onCreate");
+//		Log.e("TEST", "onCreate " + (mConext == null ? "mContext is null " : "mContext OK"));
+		Log.e("TEST", "onCreate " + (getApplicationContext() == null ? "getContext is null " : "getContext OK"));
 		setContentView(R.layout.activity_fyf_main);
 		mWebView = (FYFWebview)findViewById(R.id.webview);
 		mWebView.getSettings().setJavaScriptEnabled(true);

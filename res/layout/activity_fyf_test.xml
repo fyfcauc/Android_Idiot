@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="fill_parent"
+    	    android:layout_height="0dp"
+    	    android:layout_weight="4"
+    	    android:text="HELLO I AM TEST">
+     </TextView>
+     <Button
+         android:id="@+id/changeFragment"
+         android:text="Change!"
+         android:layout_width="fill_parent"
+    	     android:layout_height="0dp"
+    	     android:layout_weight="4">
+	</Button>
+     
+     <fragment
+     	android:id="@+id/fragment1"
+        android:layout_width="fill_parent"
+    	    android:layout_height="0dp"
+    	    android:layout_weight="10"
+    	    android:name="com.example.fyf.FYFFragment">    
+     </fragment>
+     
+    	 <FrameLayout
+    	     android:id="@+id/fragmentContainer"
+    	     android:layout_width="fill_parent"
+    	     android:layout_height="0dp"
+    	     android:layout_weight="10">
+    	 </FrameLayout>
+    	 
+    	 <com.example.fyf.FYFFrameLayout
+    	     android:id="@+id/fyfContainer"
+    	     android:layout_width="fill_parent"
+    	     android:layout_height="0dp"
+    	     android:layout_weight="10">
+    	     </com.example.fyf.FYFFrameLayout>
+    	       
+</LinearLayout>

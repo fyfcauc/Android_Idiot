@@ -1,0 +1,41 @@
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/url"
+        android:layout_width="fill_parent"
+       	android:layout_height="0dp"
+       	android:layout_weight="1"
+       	android:editable="true"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:orientation="horizontal">
+    		<Button
+        		android:id="@+id/openUrl"
+        		android:layout_width="0dp"
+        		android:text="GO!"
+        		android:layout_weight="1"
+        		android:layout_height="wrap_content"/>
+    		<Button
+        		android:id="@+id/goToTest"
+        		android:layout_width="0dp"
+        		android:text="GO TEST"
+        		android:layout_weight="1"
+        		android:layout_height="wrap_content"
+        		android:background="@null"/>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mainViewPager"
+        	android:layout_width="match_parent"
+        	android:layout_weight="1"
+        	android:layout_height="100dp"/>
+  	
+    	<com.example.fyf.FYFWebview
+    		android:id="@+id/webview"
+    		android:layout_width="fill_parent"
+       	android:layout_height="0dp"
+       	android:layout_weight="10"/>
+</LinearLayout>

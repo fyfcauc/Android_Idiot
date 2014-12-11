@@ -20,6 +20,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.viewpagerindicator.LinePageIndicator;
+import com.viewpagerindicator.PageIndicator;
+
 public class FYFMainActivity extends Activity {
 
 	FYFWebview mWebView;
@@ -31,6 +34,7 @@ public class FYFMainActivity extends Activity {
 	private boolean firstLaunch = true;
 	private static final String PREFIX = "http://";
 //	private Context mConext = getApplicationContext();
+	private PageIndicator mIndicator;
 	
 	ArrayList<View> mImageArrayList = new ArrayList<View>();
 	
@@ -42,6 +46,10 @@ public class FYFMainActivity extends Activity {
 		image2.setImageResource(R.drawable.abc_ic_cab_done_holo_dark);
 		ImageView image3 = new ImageView(getApplicationContext());
 		image3.setImageResource(R.drawable.ic_launcher);
+		ImageView image4 = new ImageView(getApplicationContext());
+		image4.setImageResource(R.drawable.bender03pb);
+		ImageView image5 = new ImageView(getApplicationContext());
+		image5.setImageResource(R.drawable.bender03pb);
 //		LayoutInflater inflater = (LayoutInflater) getApplicationContext().
 //                getSystemService(
 //                Context.LAYOUT_INFLATER_SERVICE);
@@ -50,11 +58,12 @@ public class FYFMainActivity extends Activity {
 		mImageArrayList.add(image1);
 		mImageArrayList.add(image2);
 		mImageArrayList.add(image3);
+		mImageArrayList.add(image4);
+		mImageArrayList.add(image5);
 	}
 	
 	PagerAdapter mPagerAdapter = new PagerAdapter() {
-		
-		
+
 		@Override
 		public boolean isViewFromObject(View arg0, Object arg1) {
 			// TODO Auto-generated method stub
@@ -82,6 +91,11 @@ public class FYFMainActivity extends Activity {
         public void destroyItem(ViewGroup container, int position, Object obj) {
             container.removeView(mImageArrayList.get(position));
         }
+		
+		@Override
+		public CharSequence getPageTitle(int position) {
+	        return String.valueOf(position);
+	    }
 	};
 	
 	
@@ -148,6 +162,8 @@ public class FYFMainActivity extends Activity {
             }
 		});  
 		mMainViewPager.setCurrentItem(0);
+		mIndicator = (LinePageIndicator)findViewById(R.id.indicator);  
+        mIndicator.setViewPager(mMainViewPager);
 	}
 	
 	@Override

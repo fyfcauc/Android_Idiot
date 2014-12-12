@@ -1,6 +1,7 @@
 package com.example.fyf;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -59,15 +60,14 @@ public class TestActivity extends FragmentActivity {
 		// TODO Auto-generated constructor stub
 	}
 	
-	private void addViewPager() {
+	private void addViewPager(Fragment fragment) {
 		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
-		ViewPagerFragment newFragemnt = new ViewPagerFragment();
 //		Bundle mBundle = new Bundle();
 //		mBundle.putInt("layoutId", currentFragmentLayoutId);
 //		FYFFragment newFragemnt = new FYFFragment();
 //		newFragemnt.setLayoutId(R.layout.fragment2);
-		ft.replace(R.id.fragmentContainer, newFragemnt);
+		ft.replace(R.id.fragmentContainer, fragment);
 		ft.commit();
 	}
 	
@@ -84,7 +84,9 @@ public class TestActivity extends FragmentActivity {
 		mChangeButton = (Button)findViewById(R.id.changeFragment);
 //		mChangeButton.setOnClickListener(mChangeFragmentListener);
 		mChangeButton.setOnClickListener(mChangeFragmentListener);
-		addViewPager();
+		mChangeButton.setEnabled(false);
+//		addViewPager(new ViewPagerFragment());
+		addViewPager(new ProgressBarFragment());
 	}
 
 }

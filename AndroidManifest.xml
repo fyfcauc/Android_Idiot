@@ -17,8 +17,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.fyf.FYFMainActivity"
-            android:label="@string/app_name"
+            android:name="com.example.fyf.SimpleActivity"
+            android:label="Simple"
             android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation|keyboardHidden|screenSize" >
             <intent-filter>
@@ -26,6 +26,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.fyf.FYFMainActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
         <activity
             android:name="com.example.fyf.TestActivity"

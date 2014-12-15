@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fyf="http://schemas.android.com/apk/res/com.example.fyf"
+    android:id="@+id/root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/inval"
+        android:text="Refresh"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"/>
+    <com.example.fyf.SimpleView
+        android:id="@+id/simple"
+        android:background="@drawable/bender03pb"
+        android:layout_width="50dp"
+    	android:layout_height="50dp"/>
+    <com.example.fyf.MyLinearLayout
+        android:id="@+id/myLinear"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        fyf:My_text="MY TEXT VIEW"
+        fyf:My_src="@drawable/bender03pb"/>
+</LinearLayout>

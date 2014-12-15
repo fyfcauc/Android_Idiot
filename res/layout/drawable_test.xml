@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+	<com.example.fyf.DrawableTestView
+	    android:id="@+id/test_view"
+	    android:layout_height="0dp"
+	    android:layout_weight="10"
+	    android:layout_width="fill_parent">
+	    </com.example.fyf.DrawableTestView>
+
+	<Button
+	    android:id="@+id/button1"
+	    android:tag="@+tag/button1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="0dp"
+	    android:layout_weight="10"
+	    android:text="Button" />
+
+	<ImageView
+	    android:id="@+id/imageView1"
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="10"
+	    android:src="@drawable/ic_launcher" />
+
+</LinearLayout>

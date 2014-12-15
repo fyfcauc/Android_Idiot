@@ -32,7 +32,7 @@ public class MyLinearLayout extends LinearLayout {
 	private ImageView mImageView;
 	
 	private void init(Context context, AttributeSet attrs) {
-		LayoutInflater.from(context).inflate(R.layout.my_linear_layout, this, false);
+		LayoutInflater.from(context).inflate(R.layout.my_linear_layout, this, true);
 		mTextView = (TextView)this.findViewById(R.id.myTextView);
 		mImageView = (ImageView)this.findViewById(R.id.myImageView);
 		

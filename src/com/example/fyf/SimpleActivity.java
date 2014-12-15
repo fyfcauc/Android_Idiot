@@ -6,13 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 public class SimpleActivity extends Activity {
 
 	private Button mButton;
 	private View mView;
-	private View mRootView;
+	private ViewGroup mRootView;
 	private int mW = 500;
 	private int mH = 500;
 	public SimpleActivity() {
@@ -25,7 +26,7 @@ public class SimpleActivity extends Activity {
 		setContentView(R.layout.activity_fyf_simple);
 		mButton = (Button)findViewById(R.id.inval);
 		mView = findViewById(R.id.simple);
-		mRootView = findViewById(R.id.root);
+		mRootView = (ViewGroup)findViewById(R.id.root);
 		mButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -51,5 +52,7 @@ public class SimpleActivity extends Activity {
 //		        mView.setLayoutParams(prams);
 			}
 		});
+		mRootView.addView(new MyLinearLayout(getBaseContext()));
+		mRootView.addView(new MyLinearLayout(getBaseContext()));
 	}
 }

@@ -3,6 +3,7 @@ package com.example.fyf;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,6 +31,7 @@ public class MyLinearLayout extends LinearLayout {
 	
 	private TextView mTextView;
 	private ImageView mImageView;
+	private final static String TAG = "MyLinearLayout";
 	
 	private void init(Context context, AttributeSet attrs) {
 		LayoutInflater.from(context).inflate(R.layout.my_linear_layout, this, true);
@@ -50,7 +52,13 @@ public class MyLinearLayout extends LinearLayout {
             		break;
             }
         }
-        attrArray.recycle();
-        
+        attrArray.recycle();   
     }
+	
+	@Override
+	protected void onAttachedToWindow() {
+		// TODO Auto-generated method stub
+		super.onAttachedToWindow();
+		Log.e(TAG, "onAttachedToWindow");
+	}
 }

@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <Button
+        android:id="@+id/nightModeButton"
+        android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="30">
+    </Button>
+	<com.example.fyf.MyNightModeView
+	    android:id="@+id/myNightModeView1"
+	    android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="70"
+    	android:background="@drawable/my_selector">
+	</com.example.fyf.MyNightModeView>
+	<View
+	    android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="10"
+    	android:background="#000000">
+	</View>
+	<com.example.fyf.MyNightModeView
+	    android:id="@+id/myNightModeView2"
+	    android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="70"
+    	android:background="@drawable/my_selector">
+	</com.example.fyf.MyNightModeView>
+    
+</LinearLayout>

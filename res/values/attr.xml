@@ -4,4 +4,9 @@
         <attr name="My_src" format="reference"/>
         <attr name="My_text" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="NightMode">
+        <attr name="night_mode" format="boolean"/>
+        <attr name="night_mode_text" format="string"/>
+    </declare-styleable>
 </resources>

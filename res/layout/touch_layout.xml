@@ -1,0 +1,20 @@
+<com.example.fyf.TouchLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+	<com.example.fyf.TouchView
+	    android:id="@+id/TouchView"
+	    android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="100"
+    	android:src="@drawable/home"
+    	android:background="@drawable/screen">
+	    </com.example.fyf.TouchView>
+	<ImageView
+	    android:id="@+id/IMG1"
+	    android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="100"
+    	android:src="@drawable/bender03pb">
+	</ImageView>
+</com.example.fyf.TouchLinearLayout>

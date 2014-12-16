@@ -1,6 +1,9 @@
 package com.example.fyf;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -57,6 +60,15 @@ public class TouchView extends ImageView {
 		return mGesture.onTouchEvent(event);
 	};
 	
+	@Override
+	protected void onDraw(Canvas canvas) {
+		// TODO Auto-generated method stub
+		super.onDraw(canvas);
+		Paint p = new Paint();
+		p.setColor(Color.rgb(255, 0, 0));
+		canvas.drawCircle(100, 100, 100, p);
+	}
+
 	public TouchView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 //		setClickable(true);

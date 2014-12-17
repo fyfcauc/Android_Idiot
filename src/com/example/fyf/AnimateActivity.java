@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
 public class AnimateActivity extends Activity {
@@ -37,6 +38,23 @@ public class AnimateActivity extends Activity {
          anim.start();
 	}
 	
+	private void startScaleXAnimation(View animatingView, int duration) {
+		 Animator anim = ObjectAnimator.ofFloat(animatingView, "ScaleX", 2.f, 0.5f);
+        anim.setDuration(duration);
+        anim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+           	 Log.e("FYF", "startFadeAnimation");
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+           	 Log.e("FYF", "endFadeAnimation");
+            }
+        });
+        anim.start();
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -47,7 +65,16 @@ public class AnimateActivity extends Activity {
 		mImageView2 = (ImageView)findViewById(R.id.IMG2);
 		mImageView3 = (ImageView)findViewById(R.id.IMG3);
 		mImageView4 = (ImageView)findViewById(R.id.IMG4);
+		mImageView2.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Log.e("FYF", "I am clicked!");
+			}
+		});
 		startFadeAnimation(mImageView1, 5000);
+		startScaleXAnimation(mImageView2, 2000);
 	}
 	
 	@Override

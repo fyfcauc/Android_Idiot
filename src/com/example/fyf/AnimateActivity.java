@@ -1,7 +1,9 @@
 package com.example.fyf;
 
 import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.os.Bundle;
@@ -39,7 +41,7 @@ public class AnimateActivity extends Activity {
 	}
 	
 	private void startScaleXAnimation(View animatingView, int duration) {
-		 Animator anim = ObjectAnimator.ofFloat(animatingView, "ScaleX", 2.f, 0.5f);
+		Animator anim = ObjectAnimator.ofFloat(animatingView, "ScaleX", 2.f, 0.5f);
         anim.setDuration(duration);
         anim.addListener(new AnimatorListenerAdapter() {
             @Override
@@ -53,6 +55,45 @@ public class AnimateActivity extends Activity {
             }
         });
         anim.start();
+	}
+	
+	private void startAnimateSet(View animatingView, int duration) {
+		Animator xMoveAnim = ObjectAnimator.ofFloat(animatingView, "X", 0, 500);
+		xMoveAnim.setDuration(duration);
+		Animator fadeAnim = ObjectAnimator.ofFloat(animatingView, "alpha", 1.f, 0f);
+		fadeAnim.setDuration(duration);
+		Animator xScaleAnimator = ObjectAnimator.ofFloat(animatingView, "ScaleX", 2.f, 0.5f);
+		fadeAnim.setDuration(duration);
+		
+		AnimatorSet animatorSet = new AnimatorSet();
+		animatorSet.playTogether(xMoveAnim, fadeAnim, xScaleAnimator);
+		animatorSet.addListener(new AnimatorListener() {
+			
+			@Override
+			public void onAnimationStart(Animator arg0) {
+				// TODO Auto-generated method stub
+				Log.e("FYF", "onAnimationStart");
+			}
+			
+			@Override
+			public void onAnimationRepeat(Animator arg0) {
+				// TODO Auto-generated method stub
+				Log.e("FYF", "onAnimationRepeat");
+			}
+			
+			@Override
+			public void onAnimationEnd(Animator arg0) {
+				// TODO Auto-generated method stub
+				Log.e("FYF", "onAnimationEnd");
+			}
+			
+			@Override
+			public void onAnimationCancel(Animator arg0) {
+				// TODO Auto-generated method stub
+				Log.e("FYF", "onAnimationCancel");
+			}
+		});
+		animatorSet.start();
 	}
 	
 	@Override
@@ -75,6 +116,7 @@ public class AnimateActivity extends Activity {
 		});
 		startFadeAnimation(mImageView1, 5000);
 		startScaleXAnimation(mImageView2, 2000);
+		startAnimateSet(mImageView3, 5000);
 	}
 	
 	@Override

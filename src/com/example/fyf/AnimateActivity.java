@@ -2,6 +2,7 @@ package com.example.fyf;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -96,6 +97,13 @@ public class AnimateActivity extends Activity {
 		animatorSet.start();
 	}
 	
+	private void startXmlAnimateSet(View animateView) {
+		AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(
+                this, R.animator.test_animator_set);
+        set.setTarget(animateView);
+        set.start();
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -117,6 +125,7 @@ public class AnimateActivity extends Activity {
 		startFadeAnimation(mImageView1, 5000);
 		startScaleXAnimation(mImageView2, 2000);
 		startAnimateSet(mImageView3, 5000);
+		startXmlAnimateSet(mImageView4);
 	}
 	
 	@Override

@@ -24,6 +24,13 @@ public class AnimateLinearLayout extends LinearLayout {
 	}
 
 	@Override
+	protected void onDraw(Canvas canvas) {
+		// TODO Auto-generated method stub
+		super.onDraw(canvas);
+		Log.e("FYF", "AnimateLinearLayout onDraw");
+	}
+	
+	@Override
 	protected void dispatchDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.dispatchDraw(canvas);

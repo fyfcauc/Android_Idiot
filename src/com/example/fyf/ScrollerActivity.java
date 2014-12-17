@@ -26,7 +26,6 @@ public class ScrollerActivity extends Activity {
 		l1.setLayoutParams(p0);
 		mScroller = new Scroller(this);
 		setContentView(l1);
-		mScroller.startScroll(-500, -500, 500, 500, 10000);
 		MyButton button = new MyButton(this);
 		button.setText("I AM MOVING, HAAAAAAAAAAAAAAAA");
 		button.setTextColor(Color.rgb(255, 0, 0));
@@ -34,6 +33,8 @@ public class ScrollerActivity extends Activity {
 		//		button.setBackgroundResource(R.drawable.home);
 		button.setLayoutParams(p0);
 		l1.addView(button);
+		mScroller.startScroll(-500, -500, 500, 500, 10000);
+		button.beginScroll();
 		
 	};
 	
@@ -43,17 +44,34 @@ public class ScrollerActivity extends Activity {
 			super(ctx);
 		}
 		
-		@Override
-		public void computeScroll() {
-			// TODO Auto-generated method stub
-			super.computeScroll();
+		public void beginScroll() {
 			if (mScroller.computeScrollOffset()) {
 				int curx = mScroller.getCurrX();
 				int cury = mScroller.getCurrY();
 				Log.e(TAG, "computeScroll " + curx + " " + cury);
 				scrollTo(curx, cury);
-				postInvalidate();
+				post(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						beginScroll();
+					}
+				});
 			}
 		}
+		
+//		@Override
+//		public void computeScroll() {
+//			// TODO Auto-generated method stub
+//			super.computeScroll();
+//			if (mScroller.computeScrollOffset()) {
+//				int curx = mScroller.getCurrX();
+//				int cury = mScroller.getCurrY();
+//				Log.e(TAG, "computeScroll " + curx + " " + cury);
+//				scrollTo(curx, cury);
+//				postInvalidate();
+//			}
+//		}
 	}
 }

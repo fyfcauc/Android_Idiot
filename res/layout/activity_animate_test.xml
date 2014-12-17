@@ -1,0 +1,30 @@
+<com.example.fyf.AnimateLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/subRootView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+	<ImageView
+	    android:id="@+id/IMG1"
+	    android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="100"
+    	android:src="@drawable/bender03pb"/>
+	<ImageView
+	    android:id="@+id/IMG2"
+	    android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="100"
+    	android:src="@drawable/bender03pb"/>    
+	<ImageView
+	    android:id="@+id/IMG3"
+	    android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="100"
+    	android:src="@drawable/bender03pb"/>
+	<ImageView
+	    android:id="@+id/IMG4"
+	    android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="100"
+    	android:src="@drawable/bender03pb"/>	
+</com.example.fyf.AnimateLinearLayout>

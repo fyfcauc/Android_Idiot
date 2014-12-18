@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.fyf.AnimateActivity"
+            android:name="com.example.fyf.TestServiceActivity"
             android:label="DrawableTest"
             android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation|keyboardHidden|screenSize">
@@ -26,6 +26,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.fyf.AnimateActivity"
+            android:label="DrawableTest"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
         <activity
             android:name="com.example.fyf.HitRectActivity"
@@ -75,6 +81,10 @@
             android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
+        <service
+            android:name="com.example.fyf.TestService"
+            android:exported="false"
+            android:process=":test" />
     </application>
 
 </manifest>

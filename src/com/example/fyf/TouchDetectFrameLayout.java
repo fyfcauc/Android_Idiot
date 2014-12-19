@@ -43,15 +43,15 @@ public class TouchDetectFrameLayout extends FrameLayout {
 		// TODO Auto-generated method stub
 		Log.e(TAG, "onInterceptTouchEvent "
 				+ SystemUtils.motionEventToString(ev));
-		return true;
-		//		return super.onInterceptTouchEvent(ev);
+//		return true;
+				return super.onInterceptTouchEvent(ev);
 	}
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		Log.e(TAG, "onTouchEvent "
 				+ SystemUtils.motionEventToString(event));
-		return true;
-		//		return super.onTouchEvent(event);
+//		return true;
+				return super.onTouchEvent(event);
 	};
 }

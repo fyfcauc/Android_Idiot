@@ -28,13 +28,13 @@ public class TouchView extends ImageView {
 			new GestureDetector.SimpleOnGestureListener() {
 		@Override
 		public boolean onDown(MotionEvent e) {
-//			Log.e(TAG, "onDown");
+			Log.e(TAG, "onDown");
 			return true;
 		}
 		
 		@Override
 		public boolean onSingleTapUp(MotionEvent e) {
-//			Log.e(TAG, "onSingleTapUp");
+			Log.e(TAG, "onSingleTapUp");
 			return true;
 		}
 		
@@ -49,7 +49,7 @@ public class TouchView extends ImageView {
 		}
 		
 		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-//			Log.e(TAG, "onFling " + velocityX + " " + velocityY);
+			Log.e(TAG, "onFling " + velocityX + " " + velocityY);
 			return true;
 		};
 	};

@@ -15,6 +15,13 @@
     		android:background="#0000ff"
     		android:layout_width="200dp"
     		android:layout_height="200dp"/>
-	    
+	    	<Button 
+	    	    android:id="@+id/button1"
+	    	    android:background="#ff0000"
+	    	    android:text="SDSSS"
+	    	    android:layout_width="100dp"
+    			android:layout_height="100dp"/>
+    	
+    	
 	</com.example.fyf.TouchDetectFrameLayout1>
 </com.example.fyf.TouchDetectFrameLayout>

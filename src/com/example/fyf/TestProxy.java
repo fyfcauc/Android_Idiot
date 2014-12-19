@@ -41,6 +41,7 @@ public class TestProxy {
 		mContext = context;
 	}
 
+	// AsyncTask can only use one time!!!!!!!!1
 	private class InitAsyncTask extends AsyncTask<Void, Void, Void> {
 
 		@Override

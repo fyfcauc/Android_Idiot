@@ -1,0 +1,20 @@
+<com.example.fyf.TouchDetectFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layer1"
+    android:background="#ff0000"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+	<com.example.fyf.TouchDetectFrameLayout1
+	    android:id="@+id/layer2"
+    	android:background="#00ff00"
+    	android:layout_width="300dp"
+    	android:layout_height="300dp">
+
+    	<com.example.fyf.TouchDetectFrameLayout2
+	    	android:id="@+id/layer3"
+    		android:background="#0000ff"
+    		android:layout_width="200dp"
+    		android:layout_height="200dp"/>
+	    
+	</com.example.fyf.TouchDetectFrameLayout1>
+</com.example.fyf.TouchDetectFrameLayout>

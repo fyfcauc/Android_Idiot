@@ -3,6 +3,7 @@ package com.example.fyf;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 
 public class SystemUtils {
@@ -29,6 +30,21 @@ public class SystemUtils {
 			Rect childRect = new Rect();
 			parent.getChildAt(i).getHitRect(childRect);
 			Log.e(tag, "Child " + i + " " + childRect.toString());
+		}
+	}
+	
+	public static String motionEventToString(MotionEvent ev) {
+		switch (ev.getActionMasked()) {
+		case MotionEvent.ACTION_DOWN:
+			return "ACTION_DOWN";
+		case MotionEvent.ACTION_UP:
+			return "ACTION_UP";
+		case MotionEvent.ACTION_MOVE:
+			return "ACTION_MOVE";
+		case MotionEvent.ACTION_CANCEL:
+			return "ACTION_CANCEL";
+		default:
+			return "ACTION_UNDEFINE " + ev.getActionMasked();
 		}
 	}
 }

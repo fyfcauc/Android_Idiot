@@ -20,7 +20,8 @@
             android:name="com.example.fyf.NotificationActivity"
             android:label="DrawableTest"
             android:windowSoftInputMode="adjustPan"
-            android:configChanges="orientation|keyboardHidden|screenSize">
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

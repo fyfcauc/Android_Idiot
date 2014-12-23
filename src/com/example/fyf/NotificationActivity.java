@@ -1,6 +1,10 @@
 package com.example.fyf;
 
+import java.util.List;
+
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -46,18 +50,15 @@ public class NotificationActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				clearNotification();
+//				clearNotification();
+				printAllRunningTask();
 			}
 		});
 	};
 	
 	private static final int INTENT1 = 0;
 	
-	private void clearNotification() {
-		NotificationManager nManager = (NotificationManager)
-				getSystemService(Context.NOTIFICATION_SERVICE);
-		nManager.cancel(INTENT1);
-		
+	private void showCustomToast() {
 		Toast toast = Toast.makeText(this,
                 "clear!", Toast.LENGTH_SHORT);
         LinearLayout toastView = (LinearLayout) toast.getView();
@@ -70,6 +71,20 @@ public class NotificationActivity extends Activity {
         toastView.addView(img, MeasureSpec.makeMeasureSpec(50, MeasureSpec.EXACTLY),
                 MeasureSpec.makeMeasureSpec(50, MeasureSpec.EXACTLY));
         toast.show();
+	}
+	
+	private void clearNotification() {
+		NotificationManager nManager = (NotificationManager)
+				getSystemService(Context.NOTIFICATION_SERVICE);
+		nManager.cancel(INTENT1);
+	}
+	
+	private void printAllRunningTask() {
+		ActivityManager am = (ActivityManager)getSystemService(Activity.ACTIVITY_SERVICE);
+		List<RunningTaskInfo> runningTaskInfos = am.getRunningTasks(10);
+		for (RunningTaskInfo runningTask: runningTaskInfos) {
+			Log.e("FYF", "Running: " + runningTask.topActivity.getPackageName());
+		}
 	}
 	
 	@Override

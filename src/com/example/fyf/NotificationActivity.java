@@ -61,14 +61,20 @@ public class NotificationActivity extends Activity {
 //				listenClipBoard();
 //				stopClipBoardListenService();
 //				stopClipBoardListenServiceBySendIntent();
+				startClipBoardListenService((int)(Math.random()*10));
 			}
 		});
-//		Intent startServiceIntent = new Intent(this, ClipBoardService.class);
-//		startService(startServiceIntent);
+
 		startClipBoardListenServiceWithExtra("Boreland 2");
 	};
 	
 	private static final int INTENT1 = 0;
+	
+	private void startClipBoardListenService(int time) {
+		Intent startServiceIntent = new Intent(this, ClipBoardService.class);
+		startServiceIntent.putExtra("TIME", time);
+		startService(startServiceIntent);
+	}
 	
 	private void startClipBoardListenServiceWithExtra(String extra) {
 		Intent startServiceIntent = new Intent(this, ClipBoardService.class);

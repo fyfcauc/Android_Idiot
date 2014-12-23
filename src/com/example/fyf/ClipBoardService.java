@@ -51,6 +51,7 @@ public class ClipBoardService extends Service {
 		if (extra  != null) {
 			Log.e("FYF", "Service start with NAME " + extra);
 		}
+		Log.e("FYF", "Service start with TIME " + intent.getIntExtra("TIME", -1));
 		return Service.START_STICKY;
 	}
 	

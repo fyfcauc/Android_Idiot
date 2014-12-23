@@ -8,13 +8,18 @@ import android.app.ActivityManager.RunningTaskInfo;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -51,12 +56,62 @@ public class NotificationActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 //				clearNotification();
-				printAllRunningTask();
+//				printAllRunningTask();
+//				showViewByWindowManager();
+//				listenClipBoard();
+//				stopClipBoardListenService();
+//				stopClipBoardListenServiceBySendIntent();
 			}
 		});
+//		Intent startServiceIntent = new Intent(this, ClipBoardService.class);
+//		startService(startServiceIntent);
+		startClipBoardListenServiceWithExtra("Boreland 2");
 	};
 	
 	private static final int INTENT1 = 0;
+	
+	private void startClipBoardListenServiceWithExtra(String extra) {
+		Intent startServiceIntent = new Intent(this, ClipBoardService.class);
+		startServiceIntent.putExtra("NAME", extra);
+		startService(startServiceIntent);
+	}
+	
+	private void stopClipBoardListenService() {
+		Intent stopServiceIntent = new Intent(this, ClipBoardService.class);
+		stopService(stopServiceIntent);
+	}
+	
+	private ClipboardManager mClipboardManager;
+	private void listenClipBoard() {
+		mClipboardManager
+		= (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+		ClipboardManager.OnPrimaryClipChangedListener clipListner = 
+				new ClipboardManager.OnPrimaryClipChangedListener() {
+			@Override
+            public void onPrimaryClipChanged() {
+				ClipData clip = mClipboardManager.getPrimaryClip();
+				if (clip != null && clip.getItemCount() > 0) {
+                    CharSequence clipString = clip.getItemAt(0).getText();
+                    String newClipString = clipString.toString().trim();
+                    Log.e("FYF", "Clip " + newClipString);
+				}
+			}
+		};
+		mClipboardManager.addPrimaryClipChangedListener(clipListner);
+	}
+	
+	private void showViewByWindowManager() {
+		WindowManager wm = (WindowManager)getSystemService(Context.WINDOW_SERVICE);
+		View testView = getLayoutInflater().inflate(R.layout.notification, null);
+		final WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+                WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.TYPE_PHONE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                        | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
+                PixelFormat.TRANSLUCENT);
+        params.gravity = Gravity.BOTTOM;
+        wm.addView(testView, params);
+	}
 	
 	private void showCustomToast() {
 		Toast toast = Toast.makeText(this,

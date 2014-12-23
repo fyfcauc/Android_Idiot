@@ -1,6 +1,9 @@
 package com.example.fyf;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -37,6 +40,15 @@ public class NotificationActivity extends Activity {
 	private Button mButton;
 	private Button mButton2;
 	
+	private ScheduledExecutorService mScheduledExecutorService
+	 = Executors.newSingleThreadScheduledExecutor();
+	
+	private Runnable mSendInfoTask =  new Runnable() {
+		public void run() {
+			startClipBoardListenService((int)(Math.random()*10));
+		}
+	};
+	
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_notification);
@@ -61,11 +73,14 @@ public class NotificationActivity extends Activity {
 //				listenClipBoard();
 //				stopClipBoardListenService();
 //				stopClipBoardListenServiceBySendIntent();
-				startClipBoardListenService((int)(Math.random()*10));
+//				startClipBoardListenService((int)(Math.random()*10));
+				mScheduledExecutorService.shutdown();
 			}
 		});
 
 		startClipBoardListenServiceWithExtra("Boreland 2");
+		mScheduledExecutorService.execute(mSendInfoTask);
+		mScheduledExecutorService.scheduleAtFixedRate(mSendInfoTask, 0, 5, TimeUnit.SECONDS);
 	};
 	
 	private static final int INTENT1 = 0;

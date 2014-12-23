@@ -19,6 +19,7 @@ public class NotificationActivity extends Activity {
 	}
 	
 	private Button mButton;
+	private Button mButton2;
 	
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,7 +33,24 @@ public class NotificationActivity extends Activity {
 				scheduleNotification();
 			}
 		});
+		mButton2 = (Button)findViewById(R.id.button2);
+		mButton2.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				clearNotification();
+			}
+		});
 	};
+	
+	private static final int INTENT1 = 0;
+	
+	private void clearNotification() {
+		NotificationManager nManager = (NotificationManager)
+				getSystemService(Context.NOTIFICATION_SERVICE);
+		nManager.cancel(INTENT1);
+	}
 	
 	private void scheduleNotification() {
 		CharSequence title = "Hello world";
@@ -41,14 +59,18 @@ public class NotificationActivity extends Activity {
 		long when = System.currentTimeMillis();
 		RemoteViews remoteView = new RemoteViews(this.getPackageName(), R.layout.notification);
 //		remoteView.setImageViewResource(R.id.imageView1, R.drawable.bender03pb);
-		PendingIntent contentIntent = PendingIntent.getActivity(
+		PendingIntent settingsIntent = PendingIntent.getActivity(
 				NotificationActivity.this, 0, new Intent("android.settings.SETTINGS"), 0);
+		PendingIntent contentIntent = PendingIntent.getActivity(NotificationActivity.this,
+					0, new Intent(this, NotificationActivity.class), 0);
 //		NotificationCompat.Builder notiBuilder = new NotificationCompat.Builder(this);
+		remoteView.setOnClickPendingIntent(R.id.button1, settingsIntent);
 		Notification noti = new NotificationCompat.Builder(this).setSmallIcon(icon)
-					.setWhen(when).setContentTitle(title).setContentText(text)
+					.setAutoCancel(true)
+					.setWhen(System.currentTimeMillis() + 10000).setContentTitle(title).setContentText(text)
 					.setContent(remoteView).setContentIntent(contentIntent).build();
 		NotificationManager mnotiManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);  
-        mnotiManager.notify(0, noti);
+        mnotiManager.notify(INTENT1, noti);
 		
 	}
 }

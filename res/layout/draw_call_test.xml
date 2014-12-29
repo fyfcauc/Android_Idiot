@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#330000ff"
+    android:orientation="vertical" >
+	
+    <com.example.fyf.TestDrawLinearLayout
+        android:id="@+id/L1"
+        android:layout_width="400dp"
+    	android:layout_height="400dp"
+    	android:background="#33ff0000"
+    	android:orientation="vertical">
+    	<com.example.fyf.TestDrawLinearLayout
+        	android:id="@+id/L2"
+        	android:layout_width="300dp"
+    		android:layout_height="300dp"
+    		android:background="#00ff00"
+    		android:orientation="vertical">
+    		<view
+    		    class="com.example.fyf.TestDrawLinearLayout$TestDrawImageView"
+    		    android:id="@+id/Img1"
+    		    android:layout_width="100dp"
+    			android:layout_height="100dp"
+    			android:src="@drawable/bender03pb"
+    		/>
+    		
+    		<view
+    		    class="com.example.fyf.TestDrawLinearLayout$TestDrawImageView"
+    		    android:id="@+id/Img2"
+    		    android:layout_width="100dp"
+    			android:layout_height="100dp"
+    			android:src="@drawable/home"
+    		/>
+    		
+    		<Button 
+    		    android:id="@+id/Button1"
+    		    android:layout_width="100dp"
+    			android:layout_height="100dp"
+    		    />
+        </com.example.fyf.TestDrawLinearLayout>
+    </com.example.fyf.TestDrawLinearLayout>
+    
+    
+</LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.fyf;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,14 @@ public class TestDrawActivity extends Activity {
 	private View L3;
 	private View L4;
 	private int offset = 0;
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		// TODO Auto-generated method stub
+		super.onConfigurationChanged(newConfig);
+		Log.e("FYF", "onConfigurationChanged " +
+				(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT));
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

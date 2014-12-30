@@ -76,6 +76,8 @@ public class ClipBoardService extends Service {
 			setForegroundService();
 		}
 		
+		Log.e("FYF", "Service " + SystemUtils.testVal);
+		
 		return Service.START_STICKY;
 	}
 	

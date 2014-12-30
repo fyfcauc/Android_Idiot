@@ -53,6 +53,9 @@ public class NotificationActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_notification);
 		mButton = (Button)findViewById(R.id.button1);
+		Log.e("FYF", "Activity " + SystemUtils.testVal);
+		SystemUtils.testVal = 2;
+		Log.e("FYF", "Activity change " + SystemUtils.testVal);
 		mButton.setOnClickListener(new OnClickListener() {
 			
 			@Override

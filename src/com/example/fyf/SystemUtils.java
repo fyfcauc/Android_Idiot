@@ -12,6 +12,13 @@ public class SystemUtils {
 	public void setAppContext(Context curAppContext) {
 		sAppContext = curAppContext;
 	}
+		
+	static {
+		Log.e("FYF", "SystemUtils is loaded "
+				+ Thread.currentThread().getId() + " " + android.os.Process.myPid());
+	}
+	
+	public static int testVal;
 	
 	public Context getAppContext() {
 		return sAppContext;

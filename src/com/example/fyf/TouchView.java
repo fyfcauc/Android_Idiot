@@ -43,8 +43,9 @@ public class TouchView extends ImageView {
 			if (e1 == null || e2 == null) {
 				return false;
 			}
-			Log.e(TAG, "onScroll " + distanceX + " " + distanceY);
-			scrollBy(0, (int)distanceY);
+			Log.e(TAG, "onScroll " + distanceX + " " + distanceY
+					+ " " + getScrollX() + " " + getScrollY());
+			scrollBy((int)distanceX, (int)distanceY);
 			return true;
 		}
 		

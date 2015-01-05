@@ -1,15 +1,53 @@
 package com.example.fyf;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class TestAttachActivity extends Activity {
 
 	public TestAttachActivity() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	private static class MyLinearLayout extends LinearLayout {
+
+		private int S = 50;
+		public MyLinearLayout(Context context, AttributeSet attrs, int defStyle) {
+			super(context, attrs, defStyle);
+			// TODO Auto-generated constructor stub
+		}
+		
+		public MyLinearLayout(Context context) {
+			super(context);
+			// TODO Auto-generated constructor stub
+		}
+		
+		public MyLinearLayout(Context context, AttributeSet attrs) {
+			super(context, attrs);
+			// TODO Auto-generated constructor stub
+		}
+		
+		
+		@Override
+		protected void onLayout(boolean changed, int l, int t, int r, int b) {
+			// TODO Auto-generated method stub
+			Log.e("FYF", "onLayout");
+			super.onLayout(changed, l, t, r, b);
+			int childNum = getChildCount();
+			for (int i = 0; i < childNum; i++) {
+				View child = getChildAt(i);
+				child.layout(0, 0, S, S);
+				S+=50;
+			}
+		}
+		
 	}
 	
 	private Button mButton;

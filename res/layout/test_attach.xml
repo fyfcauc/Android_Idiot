@@ -9,19 +9,25 @@
         android:layout_width="100dp"
     	android:layout_height="50dp"/>
     
-    <view
-        class="com.example.fyf.TestAttachActivity$MyLinearLayout"
-    	android:layout_width="200dp"
-    	android:layout_height="200dp"
+    <LinearLayout
+     	android:id="@+id/container"
+    	android:layout_width="500dp"
+    	android:layout_height="500dp"
     	android:orientation="vertical" >
     
     	<com.example.fyf.TestAttachView
         	android:id="@+id/view1"
         	android:layout_width="200dp"
     		android:layout_height="200dp"
-    		android:visibility="gone"
     		android:background="@drawable/home"/>
-    </view>
+    	
+    	<View
+        	android:id="@+id/view2"
+        	android:layout_width="200dp"
+    		android:layout_height="200dp"
+    		android:background="@drawable/bender03pb"/>
+    </LinearLayout>
+
     <Button
         android:id="@+id/button2"
         android:text="FOO"

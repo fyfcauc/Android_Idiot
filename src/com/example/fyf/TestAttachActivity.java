@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -51,6 +52,8 @@ public class TestAttachActivity extends Activity {
 	}
 	
 	private Button mButton;
+	private Button mButton2;
+	private ViewGroup mContainer;
 	private View mView;
 	
 	@Override
@@ -60,6 +63,7 @@ public class TestAttachActivity extends Activity {
 		setContentView(R.layout.test_attach);
 		mView = findViewById(R.id.view1);
 		mButton = (Button)findViewById(R.id.button1);
+		mContainer = (ViewGroup)findViewById(R.id.container);
 		mButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -77,6 +81,21 @@ public class TestAttachActivity extends Activity {
 				}
 			}
 		});
+		mButton2 = (Button)findViewById(R.id.button2);
+		mButton2.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				int childNum = mContainer.getChildCount();
+				if (childNum > 1) {
+					mContainer.removeViewInLayout(mContainer.getChildAt(0));
+				} else if (childNum == 1) {
+					mContainer.removeView(mContainer.getChildAt(0));
+				}
+			}
+		});
+		
 	}
 
 }

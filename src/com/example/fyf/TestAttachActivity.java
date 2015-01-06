@@ -55,56 +55,69 @@ public class TestAttachActivity extends Activity {
 	private Button mButton2;
 	private ViewGroup mContainer;
 	private View mView;
+	private View mView2;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.test_attach);
-		mView = findViewById(R.id.view1);
-		mButton = (Button)findViewById(R.id.button1);
-		mContainer = (ViewGroup)findViewById(R.id.container);
-		mButton.setOnClickListener(new OnClickListener() {
+		((ViewGroup)(getWindow().getDecorView().findViewById(android.R.id.content))).getChildAt(0).setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				mView.setPivotX(0.0f);
-				mView.setScaleX(0.5f);
-//				mView.setScaleY(1.0f);
-				if (mView.getVisibility() == View.GONE) {
-					mView.setVisibility(View.VISIBLE);
-				} else if (mView.getVisibility() == View.VISIBLE) {
-					mView.setVisibility(View.INVISIBLE);
-				} else {
-					mView.setVisibility(View.GONE);
-				}
+				Log.e("FYF", "onClick " + arg0.getId());
 			}
 		});
+		mView = findViewById(R.id.view1);
+		mView.setClickable(true);
+		mView2 = findViewById(R.id.view2);
+		mView2.setClickable(true);
+		mButton = (Button)findViewById(R.id.button1);
+		mContainer = (ViewGroup)findViewById(R.id.container);
+//		mButton.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View arg0) {
+//				// TODO Auto-generated method stub
+//				mView.setPivotX(0.0f);
+//				mView.setScaleX(0.5f);
+////				mView.setScaleY(1.0f);
+//				if (mView.getVisibility() == View.GONE) {
+//					mView.setVisibility(View.VISIBLE);
+//				} else if (mView.getVisibility() == View.VISIBLE) {
+//					mView.setVisibility(View.INVISIBLE);
+//				} else {
+//					mView.setVisibility(View.GONE);
+//				}
+//			}
+//		});
 		mButton2 = (Button)findViewById(R.id.button2);
-		mButton2.setOnClickListener(new OnClickListener() {
-			
+		mButton2.setOnClickListener(new OnClickListener() {	
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				int childNum = mContainer.getChildCount();
-//				if (childNum > 1) {
-//					mContainer.removeViewInLayout(mContainer.getChildAt(0));
-//				} else if (childNum == 1) {
-//					mContainer.removeView(mContainer.getChildAt(0));
-//				}
-				if (childNum > 0) {
-					Log.e("FYF", "removeAllViewsInLayout");
-					mContainer.removeAllViewsInLayout();
-				} else {
-					Log.e("FYF", "requestLayout");
-					// no this, size do not change
-					mContainer.requestLayout();
-					// no this, view not be refreshed
-					mContainer.invalidate();
-				}
-				
+				mView2.setSelected(!mView2.isSelected());
 			}
+//				int childNum = mContainer.getChildCount();
+////				if (childNum > 1) {
+////					mContainer.removeViewInLayout(mContainer.getChildAt(0));
+////				} else if (childNum == 1) {
+////					mContainer.removeView(mContainer.getChildAt(0));
+////				}
+//				if (childNum > 0) {
+//					Log.e("FYF", "removeAllViewsInLayout");
+//					mContainer.removeAllViewsInLayout();
+//				} else {
+//					Log.e("FYF", "requestLayout");
+//					// no this, size do not change
+//					mContainer.requestLayout();
+//					// no this, view not be refreshed
+//					mContainer.invalidate();
+//				}
+//				
+//			}
 		});
 		
 	}

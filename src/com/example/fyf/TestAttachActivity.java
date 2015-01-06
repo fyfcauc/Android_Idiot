@@ -88,11 +88,22 @@ public class TestAttachActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				int childNum = mContainer.getChildCount();
-				if (childNum > 1) {
-					mContainer.removeViewInLayout(mContainer.getChildAt(0));
-				} else if (childNum == 1) {
-					mContainer.removeView(mContainer.getChildAt(0));
+//				if (childNum > 1) {
+//					mContainer.removeViewInLayout(mContainer.getChildAt(0));
+//				} else if (childNum == 1) {
+//					mContainer.removeView(mContainer.getChildAt(0));
+//				}
+				if (childNum > 0) {
+					Log.e("FYF", "removeAllViewsInLayout");
+					mContainer.removeAllViewsInLayout();
+				} else {
+					Log.e("FYF", "requestLayout");
+					// no this, size do not change
+					mContainer.requestLayout();
+					// no this, view not be refreshed
+					mContainer.invalidate();
 				}
+				
 			}
 		});
 		

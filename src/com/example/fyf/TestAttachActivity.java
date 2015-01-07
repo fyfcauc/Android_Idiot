@@ -5,10 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -64,6 +62,8 @@ public class TestAttachActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.test_attach);
+		mView = findViewById(R.id.view1);
+		mView.setClickable(true);
 		((ViewGroup)(getWindow().getDecorView().findViewById(android.R.id.content))).getChildAt(0).setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -82,24 +82,23 @@ public class TestAttachActivity extends Activity {
 //				Log.e("FYF", "Screen mView " + coordScreen[0] + " " + coordScreen[1]);
 //				mContainer.getLocationInWindow(coordWindow);
 //				Log.e("FYF", "Window mView " + coordWindow[0] + " " + coordWindow[1]);
-				mView.scrollBy(50, 50);
-				Log.e("FYF", mView.getScrollX() + " " + mView.getScrollY());
+//				mView.scrollBy(50, 50);
+//				Log.e("FYF", mView.getScrollX() + " " + mView.getScrollY());
 				
+				mView.invalidate();
 			}
 		});
-		mView = findViewById(R.id.view1);
-		mView.setClickable(true);
 		
-		mView.setOnTouchListener(new OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View arg0, MotionEvent arg1) {
-				// TODO Auto-generated method stub
-				Log.e("FYF", arg1.getX() + " " + arg1.getY()
-						+ " " + arg1.getRawX() + " " + arg1.getRawY());
-				return false;
-			}
-		});
+//		mView.setOnTouchListener(new OnTouchListener() {
+//			
+//			@Override
+//			public boolean onTouch(View arg0, MotionEvent arg1) {
+//				// TODO Auto-generated method stub
+//				Log.e("FYF", arg1.getX() + " " + arg1.getY()
+//						+ " " + arg1.getRawX() + " " + arg1.getRawY());
+//				return false;
+//			}
+//		});
 		
 		mView2 = findViewById(R.id.view2);
 		mView2.setClickable(true);

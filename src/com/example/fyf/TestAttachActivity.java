@@ -67,7 +67,22 @@ public class TestAttachActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Log.e("FYF", "onClick " + arg0.getId());
+//				Log.e("FYF", "onClick " + arg0.getId());
+//				Log.e("FYF", "mView " + mView.getTop() + " " + mView.getLeft());
+//				int coordScreen[] = {mView.getTop(), mView.getLeft()};
+//				// init value has no avail
+//				coordScreen[0] = 78;
+//				
+//				int coordWindow[] = Arrays.copyOf(coordScreen, coordScreen.length);
+//				coordWindow[0] = 67;
+//				
+//				mContainer.getLocationOnScreen(coordScreen);
+//				Log.e("FYF", "Screen mView " + coordScreen[0] + " " + coordScreen[1]);
+//				mContainer.getLocationInWindow(coordWindow);
+//				Log.e("FYF", "Window mView " + coordWindow[0] + " " + coordWindow[1]);
+				mView.scrollBy(50, 50);
+				Log.e("FYF", mView.getScrollX() + " " + mView.getScrollY());
+				
 			}
 		});
 		mView = findViewById(R.id.view1);
@@ -98,7 +113,9 @@ public class TestAttachActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				mView2.setSelected(!mView2.isSelected());
+//				mView2.setSelected(!mView2.isSelected());
+				mView.scrollBy(-50, -50);
+				Log.e("FYF", mView.getScrollX() + " " + mView.getScrollY());
 			}
 //				int childNum = mContainer.getChildCount();
 ////				if (childNum > 1) {

@@ -2,6 +2,7 @@ package com.example.fyf;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -121,14 +122,41 @@ public class TestAttachActivity extends Activity {
 //				}
 //			}
 //		});
+		
+		mButton.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				mView.scrollBy(-50, -50);
+				
+				Rect hitRect = new Rect();
+				mView.getHitRect(hitRect);
+				Log.e("FYF", mView.getScrollX() + " " + mView.getScrollY()
+						+ " hitRect " + hitRect
+						+ " location " + mView.getLeft() + " " + mView.getTop()
+						+ " " + mView.getBottom() + " " + mView.getRight());
+			}
+		});
+		
 		mButton2 = (Button)findViewById(R.id.button2);
 		mButton2.setOnClickListener(new OnClickListener() {	
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 //				mView2.setSelected(!mView2.isSelected());
-				mView.scrollBy(-50, -50);
-				Log.e("FYF", mView.getScrollX() + " " + mView.getScrollY());
+//				mView.scrollBy(-50, -50);
+				mView.setTranslationX(
+						mView.getTranslationX() - 50);
+				mView.setTranslationY(
+						mView.getTranslationY() - 50);
+				
+				
+				Rect hitRect = new Rect();
+				mView.getHitRect(hitRect);
+				Log.e("FYF", mView.getScrollX() + " " + mView.getScrollY()
+						+ " hitRect " + hitRect
+						+ " location " + mView.getLeft() + " " + mView.getTop()
+						+ " " + mView.getBottom() + " " + mView.getRight());
 			}
 //				int childNum = mContainer.getChildCount();
 ////				if (childNum > 1) {

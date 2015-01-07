@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -50,9 +51,16 @@ public class TestAttachView extends View {
 					public boolean onScale(ScaleGestureDetector arg0) {
 						// TODO Auto-generated method stub
 						float scale = arg0.getScaleFactor();
-						Log.e("FYF", "onScale " + scale);
+						
 						TestAttachView.this.setScaleX(scale * TestAttachView.this.getScaleX());
 						TestAttachView.this.setScaleY(scale * TestAttachView.this.getScaleY());
+						Rect hitRect = new Rect();
+						TestAttachView.this.getHitRect(hitRect);
+						Log.e("FYF", "onScale " + scale + " "
+								+ TestAttachView.this.getTop() + " " + TestAttachView.this.getBottom()
+								+ " " + TestAttachView.this.getLeft() + " " + TestAttachView.this.getRight()
+								+ " hitRect " + hitRect);
+						
 						return false;
 					}
 				});
@@ -64,7 +72,7 @@ public class TestAttachView extends View {
 		// TODO Auto-generated method stub
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 		Log.e("FYF", "TestAttachView onMeasure");
-		setMeasuredDimension(1000, 1000);
+//		setMeasuredDimension(1000, 1000);
 	}
 	
 	@Override
@@ -99,7 +107,7 @@ public class TestAttachView extends View {
 //		}
 		
 		boolean res = mScaleGestureDetector.onTouchEvent(event);
-		Log.e("FYF", "TestAttachView onTouchEvent " + res);
+		Log.e("FYF", "TestAttachView onTouchEvent " + event.getX() + " " + event.getY());
 		return res;
 	}
 	

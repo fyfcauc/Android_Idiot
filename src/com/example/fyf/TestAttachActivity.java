@@ -5,8 +5,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -87,6 +89,18 @@ public class TestAttachActivity extends Activity {
 		});
 		mView = findViewById(R.id.view1);
 		mView.setClickable(true);
+		
+		mView.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				// TODO Auto-generated method stub
+				Log.e("FYF", arg1.getX() + " " + arg1.getY()
+						+ " " + arg1.getRawX() + " " + arg1.getRawY());
+				return false;
+			}
+		});
+		
 		mView2 = findViewById(R.id.view2);
 		mView2.setClickable(true);
 		mButton = (Button)findViewById(R.id.button1);

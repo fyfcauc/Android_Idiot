@@ -64,6 +64,7 @@ public class TestAttachView extends View {
 		// TODO Auto-generated method stub
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 		Log.e("FYF", "TestAttachView onMeasure");
+		setMeasuredDimension(1000, 1000);
 	}
 	
 	@Override
@@ -71,7 +72,9 @@ public class TestAttachView extends View {
 			int bottom) {
 		// TODO Auto-generated method stub
 		super.onLayout(changed, left, top, right, bottom);
-		Log.e("FYF", "TestAttachView onLayout");
+		// here the width and height both are 1000, although exceed parent.
+		Log.e("FYF", "TestAttachView onLayout " + left + " " + top
+				+ " " + right + " " + bottom);
 	}
 	
 //	@Override

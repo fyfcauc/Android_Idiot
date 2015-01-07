@@ -131,12 +131,15 @@ public class TestAttachActivity extends Activity {
 //				mContainer.scrollBy(-50, -50);
 		
 				//Note, here use LinearLayout is because mView is contained by a LinearLayout!!!!!!
-				LinearLayout.LayoutParams mlp = (LinearLayout.LayoutParams)mView.getLayoutParams();
-				
-				
-				
-				mlp.topMargin -= 50;
-				mView.setLayoutParams(mlp);
+//				LinearLayout.LayoutParams mlp = (LinearLayout.LayoutParams)mView.getLayoutParams();
+//				
+//				
+//				
+//				mlp.topMargin -= 50;
+//				mView.setLayoutParams(mlp);
+				LinearLayout.LayoutParams mlp = (LinearLayout.LayoutParams)mContainer.getLayoutParams();
+				mContainer.setPadding(mContainer.getPaddingLeft(), mContainer.getPaddingTop() - 50,
+						mContainer.getPaddingRight() ,mContainer.getPaddingBottom());
 				
 				Rect hitRect = new Rect();
 				mView.getHitRect(hitRect);

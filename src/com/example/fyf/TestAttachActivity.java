@@ -6,8 +6,10 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -86,7 +88,16 @@ public class TestAttachActivity extends Activity {
 //				mView.scrollBy(50, 50);
 //				Log.e("FYF", mView.getScrollX() + " " + mView.getScrollY());
 				
-				mView.invalidate();
+//				mView.invalidate();
+				// still can touch
+//				mView.setAlpha(0.0f);
+				// can not touch
+				mView.setVisibility(View.INVISIBLE);
+				//alpha 0.f -> 1.0f : INVISIBLE -> VISIBLE
+//				Animator anim = ObjectAnimator.ofFloat(mView, "alpha", 0.f, 1.0f);
+//				anim.setDuration(1000);
+//				anim.start();
+////				
 			}
 		});
 		
@@ -123,11 +134,28 @@ public class TestAttachActivity extends Activity {
 //			}
 //		});
 		
+		mContainer.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				// TODO Auto-generated method stub
+				Log.e("FYF", "container onTouch " + arg1.getX() + " " + arg1.getY()
+						+ " " + mView.getLeft() + mView.getTop()
+						+ " " + mView.getBottom() + mView.getRight());
+				
+				Log.e("FYF", SystemUtils.motionEventToString(arg1));
+				
+				return true;
+			}
+		});
+		
 		mButton.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-//				mView.scrollBy(-50, -50);
+				Log.e("FYF", "mContainer onScroll " + mContainer.getScrollX()
+						+ " " + mContainer.getScrollY());
+				mContainer.scrollBy(-50, -50);
 //				mContainer.scrollBy(-50, -50);
 		
 				//Note, here use LinearLayout is because mView is contained by a LinearLayout!!!!!!
@@ -137,9 +165,9 @@ public class TestAttachActivity extends Activity {
 //				
 //				mlp.topMargin -= 50;
 //				mView.setLayoutParams(mlp);
-				LinearLayout.LayoutParams mlp = (LinearLayout.LayoutParams)mContainer.getLayoutParams();
-				mContainer.setPadding(mContainer.getPaddingLeft(), mContainer.getPaddingTop() - 50,
-						mContainer.getPaddingRight() ,mContainer.getPaddingBottom());
+//				LinearLayout.LayoutParams mlp = (LinearLayout.LayoutParams)mContainer.getLayoutParams();
+//				mContainer.setPadding(mContainer.getPaddingLeft(), mContainer.getPaddingTop() - 50,
+//						mContainer.getPaddingRight() ,mContainer.getPaddingBottom());
 				
 				Rect hitRect = new Rect();
 				mView.getHitRect(hitRect);

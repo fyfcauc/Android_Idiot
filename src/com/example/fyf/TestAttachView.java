@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.OnScaleGestureListener;
@@ -96,6 +97,28 @@ public class TestAttachView extends View {
 	
 	ScaleGestureDetector mScaleGestureDetector;
 	
+	GestureDetector.OnGestureListener mOnGestureListener = new GestureDetector.SimpleOnGestureListener() {
+		
+		public boolean onDown(MotionEvent e) {
+			Log.e("FYF", "onDown");
+			return true;
+		};
+		
+		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+			Log.e("FYF", "onFling");
+			return true;
+		};
+		
+		public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+			Log.e("FYF", "onScroll");
+			return true;
+		};
+		
+	};
+
+	@SuppressWarnings("deprecation")
+	GestureDetector mGestureDetector = new GestureDetector(mOnGestureListener);
+	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
@@ -106,9 +129,10 @@ public class TestAttachView extends View {
 //					+ " " + event.getY(event.getPointerId(1)));
 //		}
 		
-		boolean res = mScaleGestureDetector.onTouchEvent(event);
+//		boolean res = mScaleGestureDetector.onTouchEvent(event);
+		mGestureDetector.onTouchEvent(event);
 		Log.e("FYF", "TestAttachView onTouchEvent " + event.getX() + " " + event.getY());
-		return res;
+		return true;
 	}
 	
 	@Override

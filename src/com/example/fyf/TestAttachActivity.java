@@ -2,12 +2,12 @@ package com.example.fyf;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
@@ -92,12 +92,13 @@ public class TestAttachActivity extends Activity {
 				// still can touch
 //				mView.setAlpha(0.0f);
 				// can not touch
-				mView.setVisibility(View.INVISIBLE);
+//				mView.setVisibility(View.INVISIBLE);
 				//alpha 0.f -> 1.0f : INVISIBLE -> VISIBLE
 //				Animator anim = ObjectAnimator.ofFloat(mView, "alpha", 0.f, 1.0f);
 //				anim.setDuration(1000);
 //				anim.start();
 ////				
+				
 			}
 		});
 		
@@ -153,28 +154,30 @@ public class TestAttachActivity extends Activity {
 			
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Log.e("FYF", "mContainer onScroll " + mContainer.getScrollX()
-						+ " " + mContainer.getScrollY());
-				mContainer.scrollBy(-50, -50);
+//				Log.e("FYF", "mContainer onScroll " + mContainer.getScrollX()
+//						+ " " + mContainer.getScrollY());
 //				mContainer.scrollBy(-50, -50);
-		
-				//Note, here use LinearLayout is because mView is contained by a LinearLayout!!!!!!
-//				LinearLayout.LayoutParams mlp = (LinearLayout.LayoutParams)mView.getLayoutParams();
+////				mContainer.scrollBy(-50, -50);
+//		
+//				//Note, here use LinearLayout is because mView is contained by a LinearLayout!!!!!!
+////				LinearLayout.LayoutParams mlp = (LinearLayout.LayoutParams)mView.getLayoutParams();
+////				
+////				
+////				
+////				mlp.topMargin -= 50;
+////				mView.setLayoutParams(mlp);
+////				LinearLayout.LayoutParams mlp = (LinearLayout.LayoutParams)mContainer.getLayoutParams();
+////				mContainer.setPadding(mContainer.getPaddingLeft(), mContainer.getPaddingTop() - 50,
+////						mContainer.getPaddingRight() ,mContainer.getPaddingBottom());
 //				
-//				
-//				
-//				mlp.topMargin -= 50;
-//				mView.setLayoutParams(mlp);
-//				LinearLayout.LayoutParams mlp = (LinearLayout.LayoutParams)mContainer.getLayoutParams();
-//				mContainer.setPadding(mContainer.getPaddingLeft(), mContainer.getPaddingTop() - 50,
-//						mContainer.getPaddingRight() ,mContainer.getPaddingBottom());
-				
-				Rect hitRect = new Rect();
-				mView.getHitRect(hitRect);
-				Log.e("FYF", mView.getScrollX() + " " + mView.getScrollY()
-						+ " hitRect " + hitRect
-						+ " location " + mView.getLeft() + " " + mView.getTop()
-						+ " " + mView.getBottom() + " " + mView.getRight());
+//				Rect hitRect = new Rect();
+//				mView.getHitRect(hitRect);
+//				Log.e("FYF", mView.getScrollX() + " " + mView.getScrollY()
+//						+ " hitRect " + hitRect
+//						+ " location " + mView.getLeft() + " " + mView.getTop()
+//						+ " " + mView.getBottom() + " " + mView.getRight());
+//				mContainer.requestLayout();
+				mContainer.invalidate();
 			}
 		});
 		
@@ -185,18 +188,24 @@ public class TestAttachActivity extends Activity {
 				// TODO Auto-generated method stub
 //				mView2.setSelected(!mView2.isSelected());
 //				mView.scrollBy(-50, -50);
-				mView.setTranslationX(
-						mView.getTranslationX() - 50);
-				mView.setTranslationY(
-						mView.getTranslationY() - 50);
-				
-				
-				Rect hitRect = new Rect();
-				mView.getHitRect(hitRect);
-				Log.e("FYF", mView.getScrollX() + " " + mView.getScrollY()
-						+ " hitRect " + hitRect
-						+ " location " + mView.getLeft() + " " + mView.getTop()
-						+ " " + mView.getBottom() + " " + mView.getRight());
+//				mView.setTranslationX(
+//						mView.getTranslationX() - 50);
+//				mView.setTranslationY(
+//						mView.getTranslationY() - 50);
+//				
+//				
+//				Rect hitRect = new Rect();
+//				mView.getHitRect(hitRect);
+//				Log.e("FYF", mView.getScrollX() + " " + mView.getScrollY()
+//						+ " hitRect " + hitRect
+//						+ " location " + mView.getLeft() + " " + mView.getTop()
+//						+ " " + mView.getBottom() + " " + mView.getRight());
+//				mView.forceLayout();
+//				mView.requestLayout();
+//				mView.invalidate();
+				mView.measure(MeasureSpec.makeMeasureSpec(1000, MeasureSpec.EXACTLY),
+						MeasureSpec.makeMeasureSpec(1000, MeasureSpec.EXACTLY));
+				mContainer.requestLayout();
 			}
 //				int childNum = mContainer.getChildCount();
 ////				if (childNum > 1) {

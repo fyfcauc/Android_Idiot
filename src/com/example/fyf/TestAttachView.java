@@ -72,7 +72,8 @@ public class TestAttachView extends View {
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		// TODO Auto-generated method stub
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-		Log.e("FYF", "TestAttachView onMeasure");
+		Log.e("FYF", "TestAttachView onMeasure " + getMeasuredHeight()
+					+ " " + getMeasuredWidth());
 //		setMeasuredDimension(1000, 1000);
 	}
 	
@@ -133,6 +134,20 @@ public class TestAttachView extends View {
 		mGestureDetector.onTouchEvent(event);
 		Log.e("FYF", "TestAttachView onTouchEvent " + event.getX() + " " + event.getY());
 		return true;
+	}
+	
+	@Override
+	public void layout(int l, int t, int r, int b) {
+		// TODO Auto-generated method stub
+		Log.e("FYF", "Layout");
+		super.layout(l, t, r, b);
+	}
+	
+	@Override
+	public void draw(Canvas canvas) {
+		// TODO Auto-generated method stub
+		Log.e("FYF", "Draw");
+		super.draw(canvas);
 	}
 	
 	@Override

@@ -77,7 +77,8 @@ public class NotificationActivity extends Activity {
 //				stopClipBoardListenService();
 //				stopClipBoardListenServiceBySendIntent();
 //				startClipBoardListenService((int)(Math.random()*10));
-				mScheduledExecutorService.shutdown();
+//				mScheduledExecutorService.shutdown();
+				updateRemoteView();
 			}
 		});
 
@@ -85,6 +86,12 @@ public class NotificationActivity extends Activity {
 		mScheduledExecutorService.execute(mSendInfoTask);
 		mScheduledExecutorService.scheduleAtFixedRate(mSendInfoTask, 0, 5, TimeUnit.SECONDS);
 	};
+	
+	private void updateRemoteView() {
+		remoteView.setViewVisibility(R.id.button1, View.INVISIBLE);
+		NotificationManager mnotiManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		mnotiManager.notify(INTENT1, noti);
+	}
 	
 	private static final int INTENT1 = 0;
 	
@@ -180,12 +187,15 @@ public class NotificationActivity extends Activity {
 		super.onNewIntent(intent);
 	}
 	
+	RemoteViews remoteView;
+	Notification noti;
+	
 	private void scheduleNotification() {
 		CharSequence title = "Hello world";
 		CharSequence text = "I am detail";
 		int icon = R.drawable.home;
 		long when = System.currentTimeMillis();
-		RemoteViews remoteView = new RemoteViews(this.getPackageName(), R.layout.notification);
+		remoteView = new RemoteViews(this.getPackageName(), R.layout.notification);
 //		remoteView.setImageViewResource(R.id.imageView1, R.drawable.bender03pb);
 		PendingIntent settingsIntent = PendingIntent.getActivity(
 				NotificationActivity.this, 0, new Intent("android.settings.SETTINGS"), 0);
@@ -200,7 +210,7 @@ public class NotificationActivity extends Activity {
 					0, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 //		NotificationCompat.Builder notiBuilder = new NotificationCompat.Builder(this);
 		remoteView.setOnClickPendingIntent(R.id.button1, settingsIntent);
-		Notification noti = new NotificationCompat.Builder(this).setSmallIcon(icon)
+		noti = new NotificationCompat.Builder(this).setSmallIcon(icon)
 					.setAutoCancel(true).setStyle(new NotificationCompat.BigPictureStyle())
 					.setWhen(System.currentTimeMillis() + 10000).setContentTitle(title).setContentText(text)
 					.setContent(remoteView).setContentIntent(contentIntent).build();

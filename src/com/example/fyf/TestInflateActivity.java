@@ -84,12 +84,26 @@ public class TestInflateActivity extends Activity {
 	View img1;
 	Button b1;
 	View L1;
+	
+	private static class MyObject {
+		
+		public int id;
+		@Override
+		public String toString() {
+			// TODO Auto-generated method stub
+			return "MyObject " + id;
+		}
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_layout);
 		img1 = findViewById(R.id.imageView1);
+		MyObject myObject = new MyObject();
+		myObject.id = 9999;
+		img1.setTag(R.id.my_obj_id, myObject);
 		b1 = (Button)findViewById(R.id.button1);
 		L1 = findViewById(R.id.layout1);
 		b1.setOnClickListener(new OnClickListener() {
@@ -104,6 +118,7 @@ public class TestInflateActivity extends Activity {
 				for (int i = 1; i <= 100; i++) {
 					img1.invalidate();
 				}
+				Log.e("FYF", ((MyObject)(img1.getTag(R.id.my_obj_id))).toString());
 			}
 		});
 	}

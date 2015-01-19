@@ -1,16 +1,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:paddingBottom="100dp"
     android:orientation="vertical" >
 
     <view
         class="com.example.fyf.TestInflateActivity$myImageView"
         android:id="@+id/imageView1"
-        android:padding="20dp"
-        android:layout_width="154dp"
-        android:layout_height="223dp"
-        android:clipToPadding="false"
-        android:src="@drawable/screen" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bender03pb" />
 
     <Button 
         android:id="@+id/button1"

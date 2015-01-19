@@ -115,10 +115,11 @@ public class TestInflateActivity extends Activity {
 //				img1.setPadding(img1.getPaddingLeft(), img1.getPaddingTop() - 10,
 //						img1.getPaddingRight(), img1.getPaddingBottom());
 //				Log.e("FYF", "scrollX is " + img1.getScrollY() + " paddingTop " + img1.getPaddingTop());
-				for (int i = 1; i <= 100; i++) {
-					img1.invalidate();
-				}
-				Log.e("FYF", ((MyObject)(img1.getTag(R.id.my_obj_id))).toString());
+//				for (int i = 1; i <= 100; i++) {
+//					img1.invalidate();
+//				}
+//				Log.e("FYF", ((MyObject)(img1.getTag(R.id.my_obj_id))).toString());
+				img1.scrollBy(0, -20);
 			}
 		});
 	}

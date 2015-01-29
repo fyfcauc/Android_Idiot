@@ -10,4 +10,23 @@
      android:layout_height="200dp"
      android:background="@drawable/home"
 	 />
+    
+    <LinearLayout
+    	android:id="@+id/l1"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:orientation="vertical" >
+	     <Button
+	     	android:id="@+id/b1"
+		 	android:layout_width="100dp"
+	     	android:layout_height="100dp"
+	     	android:tag="@+tag/vvv"
+	     	android:text="B1"/>	
+		<Button
+	     	android:id="@+id/b2"
+		 	android:layout_width="100dp"
+	     	android:layout_height="100dp"
+	     	android:tag="vvv1"
+	     	android:text="B2"/>
+	</LinearLayout>
 </LinearLayout>

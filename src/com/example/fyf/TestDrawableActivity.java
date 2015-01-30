@@ -87,15 +87,28 @@ public class TestDrawableActivity extends Activity {
 		@Override
 		protected void onDraw(Canvas canvas) {
 			// TODO Auto-generated method stub
+			Log.e("FYF", "begin onDraw canvas SaveCount " + canvas.getSaveCount());
 			super.onDraw(canvas);
-			Drawable d =  getResources().getDrawable(R.drawable.bender03pb);
 			canvas.save();
+			Drawable d =  getResources().getDrawable(R.drawable.bender03pb);
+			int savecount1 = canvas.save();
 			canvas.translate(100, 100);
+			canvas.scale(1.5f, 1.5f);
+			int savecount2 = canvas.save();
+			canvas.rotate(90);
+			canvas.skew(0.5f, 0.5f);
+			Log.e("FYF", savecount1 + " " + savecount2
+					+ " canvas save count: " + canvas.getSaveCount());
 			d.setBounds(0,0,200,200);
 			d.draw(canvas);
-			canvas.restore();
-			d.setBounds(0,0,100,100);
+			canvas.restoreToCount(savecount1);
+			Log.e("FYF", "after restore savecount2, canvas save count: " + canvas.getSaveCount());
 			d.draw(canvas);
+			canvas.restoreToCount(savecount2);
+			d.draw(canvas);
+			Log.e("FYF", "after restore savecount1, canvas save count: " + canvas.getSaveCount());
+			canvas.restore();
+			Log.e("FYF", "end onDraw canvas SaveCount " + canvas.getSaveCount());
 		}
 	}
 	

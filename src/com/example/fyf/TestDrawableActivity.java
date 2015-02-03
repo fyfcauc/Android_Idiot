@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -37,18 +38,25 @@ public class TestDrawableActivity extends Activity {
 			// TODO Auto-generated method stub
 //			return super.onInterceptTouchEvent(ev);
 			int action = MotionEventCompat.ACTION_MASK & ev.getAction();
+//			requestDisallowInterceptTouchEvent(true);
+			Log.e("FYF", "myLinearLayout onInterceptTouchEvent "
+					+ MotionEvent.actionToString(action)
+					+ " " + ev.getX() + " " + ev.getY());
 			
-			if (action == MotionEvent.ACTION_DOWN) {
-				return false;
-			} else {
-				return true;
-			}
+//			if (action == MotionEvent.ACTION_DOWN) {
+//				return false;
+//			} else {
+//				return true;
+//			}
+			return false;
 		}
 		
 		@Override
 		public boolean onTouchEvent(MotionEvent event) {
 			// TODO Auto-generated method stub
-			Log.e("FYF", "myLinearLayout " + SystemUtils.motionEventToString(event));
+			Log.e("FYF", "myLinearLayout " + SystemUtils.motionEventToString(event)
+					+ " " + event.getX() + " " + event.getY()
+					+ " " + getScrollX() + " " + getScrollY());
 			return true;
 		}
 		
@@ -61,10 +69,12 @@ public class TestDrawableActivity extends Activity {
 		public boolean onTouchEvent(MotionEvent event) {
 			// TODO Auto-generated method stub
 			int action = MotionEventCompat.ACTION_MASK & event.getAction();
-			Log.e("FYF", "myView " + SystemUtils.motionEventToString(event));
-			if (action == MotionEvent.ACTION_DOWN) {
-				getParent().requestDisallowInterceptTouchEvent(true);
-			}
+			Log.e("FYF", "myView " + SystemUtils.motionEventToString(event)
+				+ " " + event.getX() + " " + event.getY()
+				+ " " + getScrollX() + " " + getScrollY());
+//			if (action == MotionEvent.ACTION_DOWN) {
+//				getParent().requestDisallowInterceptTouchEvent(true);
+//			}
 			
 			return true;
 		}
@@ -82,6 +92,13 @@ public class TestDrawableActivity extends Activity {
 		public myView(Context context, AttributeSet attrs, int defStyleAttr) {
 			super(context, attrs, defStyleAttr);
 			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		protected void onAttachedToWindow() {
+			// TODO Auto-generated method stub
+//			getParent().requestDisallowInterceptTouchEvent(true);
+			super.onAttachedToWindow();
 		}
 		
 		@Override
@@ -121,11 +138,29 @@ public class TestDrawableActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.test_drawable);
-		View v = findViewById(R.id.l1);
+		final View v = findViewById(R.id.l1);
 		Button v1 = (Button)v.findViewById(R.id.b1);
 		v1.setTag("B1");
+		v1.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				v.scrollBy(50, 50);
+//				v.setTranslationX(v.getTranslationX() + 50);
+			}
+		});
 		Button v2 = (Button)v.findViewById(R.id.b2);
 		v2.setTag(1);
+		v2.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				v.scrollBy(-50, -50);
+//				v.setTranslationX(v.getTranslationX() - 50);
+			}
+		});
 		Button v3 = (Button)(v.findViewWithTag(1));
 		View v4 = v.findViewWithTag("vvv1");
 		Log.e("FYF", "find tag " + v3.getText() + " " + (v4 == null));

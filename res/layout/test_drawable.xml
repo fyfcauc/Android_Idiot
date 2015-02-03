@@ -5,9 +5,15 @@
     <view
         class="com.example.fyf.TestDrawableActivity$myLinearLayout"
     	android:id="@+id/l1"
-    	android:layout_width="fill_parent"
+    	android:layout_width="200dp"
     	android:layout_height="fill_parent"
     	android:orientation="vertical" >
+    	<Button
+	     	android:id="@+id/b0"
+		 	android:layout_width="100dp"
+	     	android:layout_height="100dp"
+	     	android:tag="@+tag/vvv"
+	     	android:text="B0"/>	
 	    <view
 	 		class="com.example.fyf.TestDrawableActivity$myView"
 	 		android:id="@+id/myview"

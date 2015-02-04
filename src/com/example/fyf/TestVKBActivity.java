@@ -1,9 +1,12 @@
 package com.example.fyf;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -20,6 +23,48 @@ public class TestVKBActivity extends Activity {
 		// TODO Auto-generated constructor stub
 	}
 
+	public static class myView extends View {
+
+		public myView(Context context) {
+			super(context);
+			// TODO Auto-generated constructor stub
+		}
+		public myView(Context context, AttributeSet attrs) {
+			super(context, attrs);
+			// TODO Auto-generated constructor stub
+		}
+		public myView(Context context, AttributeSet attrs, int defStyleAttr) {
+			super(context, attrs, defStyleAttr);
+			// TODO Auto-generated constructor stub
+		}
+		
+		
+		@Override
+		protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+			// TODO Auto-generated method stub
+			super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+			Log.e("FYF", "onMeasure");
+		}
+		
+		protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+			Log.e("FYF", "onLayout");
+		};
+	
+		@Override
+		protected void onDraw(Canvas canvas) {
+			// TODO Auto-generated method stub
+			super.onDraw(canvas);
+			Log.e("FYF", "onDraw");
+		}
+	
+		@Override
+		protected void onAttachedToWindow() {
+			// TODO Auto-generated method stub
+			super.onAttachedToWindow();
+			Log.e("FYF", "onAttachedToWindow");
+		}
+	}
+	
 	EditText e1;
 	Button b1;
 	static Display sDisplay;

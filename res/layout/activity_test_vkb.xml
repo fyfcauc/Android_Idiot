@@ -9,6 +9,13 @@
         android:layout_height="100dp"
         android:text="button"
         android:layout_weight="1"/>
+    <view
+        class="com.example.fyf.TestVKBActivity$myView"
+        android:id="@+id/v2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1"/>
+    
     
     <EditText
         android:id="@+id/editText1"

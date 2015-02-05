@@ -3,10 +3,10 @@
 	      android:title="item1">
 	</item>
 	<item android:id="@+id/i2"
-	      android:title="item1">
+	      android:title="item2">
 	</item>
 	<item android:id="@+id/i3"
-	      android:title="item1">
+	      android:title="item3">
 	      <menu>
 	      	<item android:id="@+id/si1"
 	      		android:title="sub_item1">

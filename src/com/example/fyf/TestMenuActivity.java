@@ -74,8 +74,8 @@ public class TestMenuActivity extends Activity {
 //				return true;
 //			}
 //		});
-		registerForContextMenu(findViewById(R.id.l1));
-		registerForContextMenu(iv1);
+//		registerForContextMenu(findViewById(R.id.l1));
+//		registerForContextMenu(iv1);
 //		registerForContextMenu(getWindow().getDecorView());
 	}
 	
